@@ -18,9 +18,10 @@ class Band {
   //por eso crearemos un Factory Constructor (recibe cierto tipo de argumentos y regresa un a nueva instancia de la clase Band)
   factory Band.fromMap(Map<String,dynamic> obj) {//aqui lo que recibe en obj un mapa<String, dynamic>
     return Band(
-      id: obj['id'], //viene de obj uy busca el id
-      name: obj['name'],
-      votes: obj['votes']
+      //viene de obj uy busca el id //validacion por si no viene el valor ponga no-id no-name no-votes
+      id:     obj.containsKey('id') ? obj ['id'] : 'no-id' ,
+      name:   obj.containsKey('name') ? obj ['name'] : 'no-name',
+      votes:  obj.containsKey('votes') ? obj ['votes'] : 'no-votes'
     );
   }
 
